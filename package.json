@@ -1,0 +1,22 @@
+{
+  "name": "stripe-connect-functions",
+  "version": "0.1.0",
+  "description": "A collection of functions to help with a Customers -> Marketplace -> Vendors Workflow with Stripe Connect",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sayanriju/stripe-connect-functions.git"
+  },
+  "author": "Sayan \"Riju\" Chakrabarti <s26c.sayan@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sayanriju/stripe-connect-functions/issues"
+  },
+  "homepage": "https://github.com/sayanriju/stripe-connect-functions#readme",
+  "dependencies": {
+    "stripe": "^5.8.0"
+  }
+}
