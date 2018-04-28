@@ -1,7 +1,7 @@
 {
   "name": "stripe-connect-functions",
   "version": "0.1.0",
-  "description": "A collection of functions to help with a Customers -> Marketplace -> Vendors Workflow with Stripe Connect",
+  "description": "A collection of functions to help with a Customers -> Marketplace -> Vendors Workflow using Stripe Connect",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
