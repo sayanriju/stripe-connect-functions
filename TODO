@@ -1,0 +1,14 @@
+
+Todo:
+  ☐ Coding:
+    ☐ Mark default card in list cards function itself
+  ☐ Documentation:
+    ☐ Draw Activity Diagrams
+    ☐ Complete documenting code
+    ☐ Write README.md (link Diagrams)
+    ☐ Generate Docs using DocumentationJS
+  ☐ Testing, Coverage & CI:
+    ☐ Write Tests using AVA. Stub using Sinon (Read up!). Add Code Coverage using nyc/istanbul.
+    ☐ Set up CI (Ref: https://codeburst.io/how-to-create-and-publish-your-first-node-js-module-444e7585b738), Travis & Coveralls.
+    ☐ Get some Badges (shields.io) and add them to README.md
+  ☐ Publish npm package
