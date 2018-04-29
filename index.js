@@ -25,8 +25,15 @@ module.exports = (stripeSecretKey) => {
 
     async fetchCustomerCards(stripeCustomerId) {
       try {
-        const { data } = await stripe.customers.listCards(stripeCustomerId)
-        return Promise.resolve(data)
+        const result = await Promise.all([
+          await stripe.customers.listCards(stripeCustomerId),
+          await stripe.customers.retrieve(stripeCustomerId)
+        ])
+        const { data } = result[0]
+        const { default_source } = result[1] // eslint-disable-line camelcase
+        return data.map(card => Object.assign(card, {
+          isDefault: (card.id === default_source) // eslint-disable-line camelcase
+        }))
       } catch (err) {
         throw err
       }
@@ -56,7 +63,7 @@ module.exports = (stripeSecretKey) => {
       try {
         const {
           default_source // eslint-disable-line camelcase
-        } = await stripe.customers.retrieve(stripeCustomerId) // eslint-disable-line camelcase
+        } = await stripe.customers.retrieve(stripeCustomerId)
         return Promise.resolve(default_source)
       } catch (err) {
         throw err
