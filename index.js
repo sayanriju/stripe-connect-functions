@@ -64,7 +64,7 @@ module.exports = (stripeSecretKey) => {
         const {
           default_source // eslint-disable-line camelcase
         } = await stripe.customers.retrieve(stripeCustomerId)
-        return Promise.resolve(default_source)
+        return default_source // eslint-disable-line camelcase
       } catch (err) {
         throw err
       }
@@ -77,7 +77,7 @@ module.exports = (stripeSecretKey) => {
         } = await stripe.customers.update(stripeCustomerId, { // eslint-disable-line camelcase
           default_source: stripeCardId
         })
-        return Promise.resolve(default_source)
+        return default_source // eslint-disable-line camelcase
       } catch (err) {
         throw err
       }
