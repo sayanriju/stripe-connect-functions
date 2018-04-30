@@ -7,6 +7,7 @@ module.exports = (stripeSecretKey) => {
       try {
         return await stripe.customers.create({ email })
       } catch (err) {
+        // istanbul ignore next
         throw err
       }
     },
@@ -19,6 +20,7 @@ module.exports = (stripeSecretKey) => {
           email,
         })
       } catch (err) {
+        // istanbul ignore next
         throw err
       }
     },
@@ -35,6 +37,7 @@ module.exports = (stripeSecretKey) => {
           isDefault: (card.id === default_source) // eslint-disable-line camelcase
         }))
       } catch (err) {
+        // istanbul ignore next
         throw err
       }
     },
@@ -45,6 +48,7 @@ module.exports = (stripeSecretKey) => {
           source: stripeToken
         })
       } catch (err) {
+        // istanbul ignore next
         throw err
       }
     },
@@ -55,6 +59,7 @@ module.exports = (stripeSecretKey) => {
           .customers
           .deleteCard(stripeCustomerId, cardId)
       } catch (err) {
+        // istanbul ignore next
         throw err
       }
     },
@@ -66,6 +71,7 @@ module.exports = (stripeSecretKey) => {
         } = await stripe.customers.retrieve(stripeCustomerId)
         return default_source // eslint-disable-line camelcase
       } catch (err) {
+        // istanbul ignore next
         throw err
       }
     },
@@ -79,6 +85,7 @@ module.exports = (stripeSecretKey) => {
         })
         return default_source // eslint-disable-line camelcase
       } catch (err) {
+        // istanbul ignore next
         throw err
       }
     },
@@ -103,6 +110,7 @@ module.exports = (stripeSecretKey) => {
           external_account: accountObj
         })
       } catch (err) {
+        // istanbul ignore next
         throw err
       }
     },
@@ -128,6 +136,7 @@ module.exports = (stripeSecretKey) => {
           legal_entity: entityObj
         })
       } catch (err) {
+        // istanbul ignore next
         throw err
       }
     },
@@ -147,6 +156,7 @@ module.exports = (stripeSecretKey) => {
           tos_acceptance: tocObj
         })
       } catch (err) {
+        // istanbul ignore next
         throw err
       }
     },
@@ -177,6 +187,7 @@ module.exports = (stripeSecretKey) => {
           }
         })
       } catch (err) {
+        // istanbul ignore next
         throw err
       }
     },
@@ -198,6 +209,7 @@ module.exports = (stripeSecretKey) => {
         }
         return await stripe.charges.capture(transactionId, objToCapture)
       } catch (err) {
+        // istanbul ignore next
         throw err
       }
     }
