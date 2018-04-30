@@ -9,7 +9,8 @@
   "scripts": {
     "test:nocoverage": "ava",
     "test:withcoverage": "nyc ava",
-    "test": "npm run test:nocoverage",
+    "test": "npm run test:withcoverage",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "npm run lint:quiet",
     "lint:quiet": "eslint --quiet './**/*.js'",
     "lint:all": "eslint './**/*.js'",
