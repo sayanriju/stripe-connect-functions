@@ -141,19 +141,19 @@ module.exports = (stripeSecretKey) => {
       }
     },
 
-    async vendorAcceptToc(stripeAccountId, {
-      tocAcceptanceDate,
-      tocAcceptanceIp,
-      tocUserAgent = null
+    async vendorAcceptTos(stripeAccountId, {
+      tosAcceptanceDate,
+      tosAcceptanceIp,
+      tosUserAgent = null
     }) {
       try {
-        const tocObj = {
-          date: tocAcceptanceDate,
-          ip: tocAcceptanceIp,
+        const tosObj = {
+          date: tosAcceptanceDate,
+          ip: tosAcceptanceIp,
         }
-        if (tocUserAgent !== null) tocObj.user_agent = tocUserAgent
+        if (tosUserAgent !== null) tosObj.user_agent = tosUserAgent
         return await stripe.accounts.update(stripeAccountId, {
-          tos_acceptance: tocObj
+          tos_acceptance: tosObj
         })
       } catch (err) {
         // istanbul ignore next

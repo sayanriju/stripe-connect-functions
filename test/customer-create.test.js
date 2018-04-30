@@ -1,9 +1,9 @@
 const test = require("ava")
 const proxyquire = require("proxyquire")
-const stripeStub = require("./stubs/_stripe.customers.js")
+const stripe = require("./_stripe.stub") // stubbed
 
 const { customerCreate } = proxyquire("../index.js", {
-  stripe: stripeStub
+  stripe
 })("dummy_stripe_token")
 
 test("Should be a function.", (t) => {
