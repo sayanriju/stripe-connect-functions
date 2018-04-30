@@ -26,6 +26,10 @@
     "url": "https://github.com/sayanriju/stripe-connect-functions/issues"
   },
   "homepage": "https://github.com/sayanriju/stripe-connect-functions#readme",
+  "keywords": [
+    "stripe",
+    "stripe connect"
+  ],
   "dependencies": {
     "stripe": "^5.8.0"
   },
