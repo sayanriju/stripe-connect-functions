@@ -7,8 +7,8 @@ Todo:
     ☐ Write README.md (link Diagrams)
     ☐ Complete documenting code
     ☐ Generate Docs using DocumentationJS
-  ☐ Testing, Coverage & CI:
-    ☐ Write Tests using AVA. Stub using Sinon (Read up!). Add Code Coverage using nyc/istanbul.
-    ☐ Set up CI (Ref: https://codeburst.io/how-to-create-and-publish-your-first-node-js-module-444e7585b738), Travis & Coveralls.
-  ☐ Publish npm package
-  ☐ Get some Badges (shields.io & nodei.co) and add them to README.md
+  ✔ Testing, Coverage & CI: @done(18-05-01 01:00)
+    ✔ Write Tests using AVA. Stub using Sinon (Read up!). Add Code Coverage using nyc/istanbul. @done(18-05-01 01:00)
+    ✔ Set up CI (Ref: https://codeburst.io/how-to-create-and-publish-your-first-node-js-module-444e7585b738), Travis & Coveralls. @done(18-05-01 01:00)
+  ✔ Publish npm package @done(18-05-01 01:00)
+  ✔ Get some Badges (shields.io & nodei.co) and add them to README.md @done(18-05-01 01:00)
