@@ -12,9 +12,9 @@ All the provided functions internally uses the [official NodeJS library for Stri
 
 The following activity diagrams try to elucidate a rudimentary workflow. The various stages are labelled with the librarry function names to use in each case.
 
-![Activity Diagram: User Management](https://github.com/sayanriju/stripe-connect-functions/blob/master/Stripe_Connect_Workflow_1.jpg)
+![https://github.com/sayanriju/stripe-connect-functions/blob/master/Stripe_Connect_Workflow_1.jpg](https://github.com/sayanriju/stripe-connect-functions/blob/master/Stripe_Connect_Workflow_1.jpg "Activity Diagram: User Management")
 
-![Activity Diagram: Payment Flow](https://github.com/sayanriju/stripe-connect-functions/blob/master/Stripe_Connect_Workflow_2.jpg)
+![https://github.com/sayanriju/stripe-connect-functions/blob/master/Stripe_Connect_Workflow_2.jpg](https://github.com/sayanriju/stripe-connect-functions/blob/master/Stripe_Connect_Workflow_2.jpg "Activity Diagram: Payment Flow")
 
 ## Installation & Basic Usage
 
