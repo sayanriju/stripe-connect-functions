@@ -21,7 +21,12 @@ The following activity diagrams try to elucidate a rudimentary workflow. The var
 0. Set up a Stripe Connect Account and obtain the _Secret key_, which is in the form `sk_myapp_k9DHwQESw7ntTGzdjS7vFsHs`
 
 1. Install:
-   ```npm install stripe-connect-functions```
+
+   ```shell
+   npm install stripe-connect-functions
+   ```
+
+   ​
 
 2. Initialize:
 
@@ -34,7 +39,7 @@ The following activity diagrams try to elucidate a rudimentary workflow. The var
 
    ```javascript
    stripeConnect.fetchCustomerCards("cus_Ckc6NCwnBdzDCb")
-   .then(console.log, console.log) // returns a Promise!
+   	.then(console.log, console.log) // returns a Promise!
    ```
 
 For details, check the Api Docs below.
