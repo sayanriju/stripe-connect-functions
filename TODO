@@ -2,11 +2,11 @@
 Todo:
   ✔ Coding: @done(18-04-29 14:00)
     ✔ Mark default card in list cards function itself @done(18-04-29 14:00)
-  ☐ Documentation:
+  ✔ Documentation: @done(18-05-01 18:15)
     ✔ Draw Activity Diagrams @done(18-04-29 20:21)
-    ☐ Write README.md (link Diagrams)
-    ☐ Complete documenting code
-    ☐ Generate Docs using DocumentationJS
+    ✔ Write README.md (link Diagrams) @done(18-05-01 18:15)
+    ✔ Complete documenting code @done(18-05-01 18:15)
+    ✔ Generate Docs using DocumentationJS @done(18-05-01 18:15)
   ✔ Testing, Coverage & CI: @done(18-05-01 01:00)
     ✔ Write Tests using AVA. Stub using Sinon (Read up!). Add Code Coverage using nyc/istanbul. @done(18-05-01 01:00)
     ✔ Set up CI (Ref: https://codeburst.io/how-to-create-and-publish-your-first-node-js-module-444e7585b738), Travis & Coveralls. @done(18-05-01 01:00)
