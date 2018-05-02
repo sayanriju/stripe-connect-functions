@@ -17,17 +17,45 @@ module.exports = (stripeSecretKey) => {
     },
 
     /**
+     * Delete a Customer on Stripe
+     * @param {string} stripeCustomerId Customer ID to delete (begins with "cus_")
+     * @returns {Promise}
+     */
+    async customerDelete(stripeCustomerId) {
+      try {
+        return await stripe.customers.del(stripeCustomerId)
+      } catch (err) {
+        // istanbul ignore next
+        throw err
+      }
+    },
+
+    /**
      * Create a Vendor (Custom Account on Stripe)
      * @param {string} [email=null]
      * @returns {Promise}
      */
-    async customAccountCreate(email = null) {
+    async vendorCreate(email = null) {
       try {
         return await stripe.accounts.create({
           country: "US",
           type: "custom",
           email,
         })
+      } catch (err) {
+        // istanbul ignore next
+        throw err
+      }
+    },
+
+    /**
+     * Delete a Vendor (Custom Account on Stripe)
+     * @param {string} stripeAccountId Vendor ID (Custom Account on Stripe) to delete (begins with "acct_")
+     * @returns {Promise}
+     */
+    async vendorDelete(stripeAccountId) {
+      try {
+        return await stripe.accounts.del(stripeAccountId)
       } catch (err) {
         // istanbul ignore next
         throw err

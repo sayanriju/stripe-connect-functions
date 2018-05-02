@@ -2,18 +2,18 @@ const test = require("ava")
 const proxyquire = require("proxyquire")
 const stripe = require("./_stripe.stub") // stubbed
 
-const { customAccountCreate } = proxyquire("../index.js", {
+const { vendorCreate } = proxyquire("../index.js", {
   stripe
 })("dummy_stripe_token")
 
 test("Should be a function.", (t) => {
-  t.is(typeof customAccountCreate, "function")
+  t.is(typeof vendorCreate, "function")
 })
 
 test("Should return a custom account from stripe without email", async (t) => {
   const {
     id, email, object, country
-  } = await customAccountCreate()
+  } = await vendorCreate()
   t.true(id.startsWith("acct"))
   t.is(object, "account")
   t.is(country, "US")
@@ -23,7 +23,7 @@ test("Should return a custom account from stripe without email", async (t) => {
 test("Should return a custom account from stripe with email", async (t) => {
   const {
     id, email, object, country
-  } = await customAccountCreate("foo@bar.com")
+  } = await vendorCreate("foo@bar.com")
   t.true(id.startsWith("acct"))
   t.is(object, "account")
   t.is(country, "US")

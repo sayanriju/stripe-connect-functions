@@ -18,29 +18,29 @@ The following activity diagrams try to elucidate a rudimentary workflow. The var
 
 ## Installation & Basic Usage
 
-0. Set up a Stripe Connect Account and obtain the _Secret key_, which is in the form `sk_myapp_k9DHwQESw7ntTGzdjS7vFsHs`
+0.  Set up a Stripe Connect Account and obtain the _Secret key_, which is in the form `sk_myapp_k9DHwQESw7ntTGzdjS7vFsHs`
 
-1. Install:
+1.  Install:
 
-   ```shell
-   npm install stripe-connect-functions
-   ```
+    ```shell
+    npm install stripe-connect-functions
+    ```
 
-   ​
+    ​
 
-2. Initialize:
+2.  Initialize:
 
-   ```javascript
-   const stripeConnect = require("stripe-connect-functions")("sk_myapp_k9DHwQESw7ntTGzdjS7vFsHs")
-   // ^^ Remember to replace with your own key!
-   ```
+    ```javascript
+    const stripeConnect = require("stripe-connect-functions")("sk_myapp_k9DHwQESw7ntTGzdjS7vFsHs")
+    // ^^ Remember to replace with your own key!
+    ```
 
-3. Use:
+3.  Use:
 
-   ```javascript
-   stripeConnect.fetchCustomerCards("cus_Ckc6NCwnBdzDCb")
-   	.then(console.log, console.log) // returns a Promise!
-   ```
+    ```javascript
+    stripeConnect.fetchCustomerCards("cus_Ckc6NCwnBdzDCb")
+    	.then(console.log, console.log) // returns a Promise!
+    ```
 
 For details, check the Api Docs below.
 
@@ -51,7 +51,9 @@ For details, check the Api Docs below.
 #### Table of Contents
 
 -   [customerCreate](#customercreate)
--   [customAccountCreate](#customaccountcreate)
+-   [customerDelete](#customerdelete)
+-   [vendorCreate](#vendorcreate)
+-   [vendorDelete](#vendordelete)
 -   [fetchCustomerCards](#fetchcustomercards)
 -   [addCustomerCard](#addcustomercard)
 -   [deleteCustomerCard](#deletecustomercard)
@@ -73,13 +75,33 @@ Create a Customer on Stripe
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** 
 
-### customAccountCreate
+### customerDelete
+
+Delete a Customer on Stripe
+
+**Parameters**
+
+-   `stripeCustomerId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Customer ID to delete (begins with "cus\_")
+
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** 
+
+### vendorCreate
 
 Create a Vendor (Custom Account on Stripe)
 
 **Parameters**
 
 -   `email` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**  (optional, default `null`)
+
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** 
+
+### vendorDelete
+
+Delete a Vendor (Custom Account on Stripe)
+
+**Parameters**
+
+-   `stripeAccountId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Vendor ID (Custom Account on Stripe) to delete (begins with "acct\_")
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** 
 
@@ -221,8 +243,6 @@ Capture an existing Payment (Stripe Charge)
 -   `statementDescriptor` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** Text appearing on Bank/Card statements (overrides the one mentioned in original charge) (optional, default `null`)
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** 
-
-
 
 ## Testing
 

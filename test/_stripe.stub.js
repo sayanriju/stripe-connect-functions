@@ -9,6 +9,13 @@ module.exports = () => ({
       })
     },
 
+    del(stripeAccountId) {
+      return Promise.resolve({
+        deleted: true,
+        id: stripeAccountId
+      })
+    },
+
     update(acctId, { external_account = {}, legal_entity = {}, tos_acceptance = {} }) {
       return Promise.resolve({
         id: acctId,
@@ -106,6 +113,12 @@ module.exports = () => ({
         object: "customer",
         default_source: "card_1CLrcwIacGIwwFOIAfrKTKHu",
         email
+      })
+    },
+    del(stripeCustomerId) {
+      return Promise.resolve({
+        deleted: true,
+        id: stripeCustomerId
       })
     },
     listCards() {
