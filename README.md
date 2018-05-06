@@ -64,6 +64,7 @@ For details, check the Api Docs below.
 -   [vendorAcceptTos](#vendoraccepttos)
 -   [initiatePayment](#initiatepayment)
 -   [capturePayment](#capturepayment)
+-   [refund](#refund)
 
 ### customerCreate
 
@@ -243,6 +244,16 @@ Capture an existing Payment (Stripe Charge)
 -   `statementDescriptor` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** Text appearing on Bank/Card statements (overrides the one mentioned in original charge) (optional, default `null`)
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** 
+
+### refund
+
+Refund a previously captured (but unrefunded) Charge
+
+**Parameters**
+
+-   `transactionId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The Stripe Charge Id to Refund
+-   `amount` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Amount to refund
+-   `reason` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Reason for refund (optional, default `null`)
 
 ## Testing
 
