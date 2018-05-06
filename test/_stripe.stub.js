@@ -205,5 +205,20 @@ module.exports = () => ({
         email: "changed@bar.com"
       })
     }
+  },
+
+  refunds: {
+    create({ charge, amount, reason = null }) {
+      return Promise.resolve({
+        id: "re_1COhlaIacGIwwFOIPsf6AkGh",
+        object: "refund",
+        amount: amount / 100,
+        currency: "usd",
+        charge,
+        reason,
+        created: 1525593526,
+        status: "succeeded"
+      })
+    }
   }
 })

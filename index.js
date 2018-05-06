@@ -338,6 +338,28 @@ module.exports = (stripeSecretKey) => {
         // istanbul ignore next
         throw err
       }
+    },
+
+    /**
+   * Refund a previously captured (but unrefunded) Charge
+   * @param {string} transactionId The Stripe Charge Id to Refund
+   * @param {string} amount Amount to refund
+   * @param {string} [reason=null] Reason for refund
+   */
+    async refund(transactionId, amount, reason = null) {
+      try {
+        const refundObj = {
+          charge: transactionId,
+          amount: amount * 100
+        }
+        if (reason !== null) {
+          refundObj.reason = reason
+        }
+        return await stripe.refunds.create(refundObj)
+      } catch (err) {
+        // istanbul ignore next
+        throw err
+      }
     }
   }
 }
