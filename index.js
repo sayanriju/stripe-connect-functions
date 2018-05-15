@@ -301,7 +301,7 @@ module.exports = (stripeSecretKey) => {
           receipt_email: receiptEmail,
           statement_descriptor: statementDescriptor,
           destination: {
-            amount: vendorAmount,
+            amount: vendorAmount * 100,
             account: vendor,
           }
         })
