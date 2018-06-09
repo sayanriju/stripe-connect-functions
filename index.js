@@ -345,6 +345,7 @@ module.exports = (stripeSecretKey) => {
    * @param {string} transactionId The Stripe Charge Id to Refund
    * @param {string} amount Amount to refund
    * @param {string} [reason=null] Reason for refund
+   * @returns {Promise}
    */
     async refund(transactionId, amount, reason = null) {
       try {
