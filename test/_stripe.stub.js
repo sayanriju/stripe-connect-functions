@@ -57,6 +57,8 @@ module.exports = () => ({
           last_name: "Bar",
           ssn_last_4_provided: !!legal_entity.ssn_last_4,
           ssn_last_4: legal_entity.ssn_last_4 || null,
+          personal_id_number_provided: !!legal_entity.personal_id_number,
+          personal_id_number: legal_entity.personal_id_number || null,
           type: null,
         },
         tos_acceptance: {

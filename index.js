@@ -207,6 +207,7 @@ module.exports = (stripeSecretKey) => {
      * @param {object} _.name Name
      * @param {string} _.name.first First Name
      * @param {string} _.name.last Last Name
+     * @param {string} _.personalIdNumber Personal ID Number (For some Non US Countries)
      * @param {string} _.ssnLastFour Last 4 digits of the SSN
      * @param {string} _.fullSsn The full SSN
      * @returns {Promise}
@@ -216,7 +217,8 @@ module.exports = (stripeSecretKey) => {
       dob = {},
       name = {},
       ssnLastFour = null,
-      fullSsn = null
+      fullSsn = null,
+      personalIdNumber = null
     }) {
       try {
         const entityObj = {
@@ -227,7 +229,8 @@ module.exports = (stripeSecretKey) => {
           type: "individual"
         }
         if (ssnLastFour !== null) entityObj.ssn_last_4 = ssnLastFour
-        if (fullSsn !== null) entityObj.personal_id_number = fullSsn
+        if (fullSsn !== null) entityObj.fullSsn = fullSsn
+        if (personalIdNumber !== null) entityObj.personal_id_number = personalIdNumber
         return await stripe.accounts.update(stripeAccountId, {
           legal_entity: entityObj
         })
