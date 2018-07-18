@@ -197,6 +197,7 @@ Update KYC details for a Vendor (Stripe Custom Account). These are mandatory to 
         -   `_.name.last` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Last Name
     -   `_.ssnLastFour` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Last 4 digits of the SSN (optional, default `null`)
     -   `_.fullSsn` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The full SSN (optional, default `null`)
+    -   `_.personalIdNumber` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Personal ID Number (For some Non US Countries) (optional, default `null`)
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** 
 
@@ -254,6 +255,8 @@ Refund a previously captured (but unrefunded) Charge
 -   `transactionId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The Stripe Charge Id to Refund
 -   `amount` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Amount to refund
 -   `reason` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Reason for refund (optional, default `null`)
+
+Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)** 
 
 ## Testing
 
