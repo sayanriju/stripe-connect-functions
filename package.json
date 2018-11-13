@@ -38,8 +38,8 @@
     "coveralls": "^3.0.2",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-import": "^2.14.0",
     "nyc": "^11.9.0",
-    "proxyquire": "^2.0.1"
+    "proxyquire": "^2.1.0"
   }
 }
