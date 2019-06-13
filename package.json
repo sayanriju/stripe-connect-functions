@@ -31,7 +31,7 @@
     "stripe connect"
   ],
   "dependencies": {
-    "stripe": "^6.2.1"
+    "stripe": "^7.1.0"
   },
   "devDependencies": {
     "ava": "^1.0.0-rc.2",
