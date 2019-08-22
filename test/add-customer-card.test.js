@@ -21,4 +21,3 @@ test("Should return a card", async (t) => {
   t.is(status, "new")
   t.is(customer, "cus_ClfSlfACLDjib2")
 })
-

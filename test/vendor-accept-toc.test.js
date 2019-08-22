@@ -36,4 +36,3 @@ test("Should update a Vendors TOC acceptance (w/o UA)", async (t) => {
     user_agent: null
   })
 })
-

@@ -23,4 +23,3 @@ test("Should return a customer from stripe with email", async (t) => {
   t.is(object, "customer")
   t.is(email, "foo@bar.com")
 })
-
