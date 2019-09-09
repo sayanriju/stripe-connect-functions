@@ -70,7 +70,7 @@ module.exports = (stripeSecretKey) => {
     async fetchCustomerCards(stripeCustomerId) {
       try {
         const result = await Promise.all([
-          await stripe.customers.listCards(stripeCustomerId),
+          await stripe.customers.listSources(stripeCustomerId),
           await stripe.customers.retrieve(stripeCustomerId)
         ])
         const { data } = result[0]
@@ -111,7 +111,7 @@ module.exports = (stripeSecretKey) => {
       try {
         return await stripe
           .customers
-          .deleteCard(stripeCustomerId, cardId)
+          .deleteSource(stripeCustomerId, cardId)
       } catch (err) {
         // istanbul ignore next
         throw err
@@ -295,19 +295,20 @@ module.exports = (stripeSecretKey) => {
       capture = false
     }) {
       try {
-        return await stripe.charges.create({
+        const opts = {
           capture,
           customer,
           amount: amount * 100, // convert to cents from dollar
           currency,
           description,
-          receipt_email: receiptEmail,
-          statement_descriptor: statementDescriptor,
           destination: {
             amount: vendorAmount * 100,
             account: vendor,
           }
-        })
+        }
+        if (receiptEmail !== null) opts.receipt_email = receiptEmail
+        if (statementDescriptor !== null) opts.statement_descriptor = statementDescriptor
+        return await stripe.charges.create(opts)
       } catch (err) {
         // istanbul ignore next
         throw err
