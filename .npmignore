@@ -1,2 +1,5 @@
 *.jpg
 TODO
+.nyc_output/
+coverage/
+.vscode/
