@@ -123,7 +123,7 @@ module.exports = () => ({
         id: stripeCustomerId
       })
     },
-    listCards() {
+    listSources() {
       return Promise.resolve({
         object: "list",
         url: "/v1/customers/cus_ClOPUSnueMks9A/sources",
@@ -193,7 +193,7 @@ module.exports = () => ({
         customer: "cus_ClfSlfACLDjib2"
       })
     },
-    deleteCard(stripeCustomerId, cardId) {
+    deleteSource(stripeCustomerId, cardId) {
       return Promise.resolve({
         deleted: true,
         id: cardId
