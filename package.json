@@ -1,6 +1,6 @@
 {
   "name": "stripe-connect-functions",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "A collection of functions to help with a Customers -> Marketplace -> Vendors Workflow using Stripe Connect",
   "main": "index.js",
   "engines": {
@@ -31,15 +31,15 @@
     "stripe connect"
   ],
   "dependencies": {
-    "stripe": "^7.1.0"
+    "stripe": "^7.9.0"
   },
   "devDependencies": {
-    "ava": "^2.1.0",
-    "coveralls": "^3.0.2",
+    "ava": "^2.3.0",
+    "coveralls": "^3.0.6",
     "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.14.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-plugin-import": "^2.18.2",
     "nyc": "^14.1.1",
-    "proxyquire": "^2.1.0"
+    "proxyquire": "^2.1.3"
   }
 }
