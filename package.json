@@ -4,7 +4,7 @@
   "description": "A collection of functions to help with a Customers -> Marketplace -> Vendors Workflow using Stripe Connect",
   "main": "index.js",
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "scripts": {
     "test:nocoverage": "ava",
@@ -31,7 +31,7 @@
     "stripe connect"
   ],
   "dependencies": {
-    "stripe": "^7.9.0"
+    "stripe": "^8.22.0"
   },
   "devDependencies": {
     "ava": "^2.3.0",
