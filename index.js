@@ -33,12 +33,15 @@ module.exports = (stripeSecretKey) => {
     /**
      * Create a Vendor (Custom Account on Stripe)
      * @param {string} [email=null]
+     * @param {string} [country=US]
      * @returns {Promise}
      */
-    async vendorCreate(email = null) {
+    async vendorCreate(email = null, country = "US") {
       try {
         return await stripe.accounts.create({
-          country: "US",
+          country,
+          business_type: "individual",
+          requested_capabilities: ["transfers"],
           type: "custom",
           email,
         })
@@ -161,19 +164,23 @@ module.exports = (stripeSecretKey) => {
      * @param {object} _ The Bank A/c details
      * @param {string}  _.routingNo
      * @param {string} _.accountNo
-     * @param {string} [_.accountHolderName]
+     * @param {string} [_.accountHolderName=null]
+     * @param {string} [_.country=US]
+     * @param {string} [_.currency=usd]
      * @returns {Promise}
      */
     async setVendorBankAccount(stripeAccountId, {
       routingNo,
       accountNo,
-      accountHolderName = null
+      accountHolderName = null,
+      country = "US",
+      currency = "usd"
     }) {
       try {
         const accountObj = {
           object: "bank_account",
-          country: "US",
-          currency: "usd",
+          country,
+          currency,
           account_number: accountNo,
           routing_number: routingNo,
         }
@@ -207,33 +214,48 @@ module.exports = (stripeSecretKey) => {
      * @param {object} _.name Name
      * @param {string} _.name.first First Name
      * @param {string} _.name.last Last Name
+     * @param {string} _.email Email Id
+     * @param {string} _.phone Phone Number
+     * @param {string} _.businessUrl Business url
      * @param {string} _.personalIdNumber Personal ID Number (For some Non US Countries)
      * @param {string} _.ssnLastFour Last 4 digits of the SSN
-     * @param {string} _.fullSsn The full SSN
+     * @param {string} _.mcc Stripe Merchant Category Code (Ref: https://stripe.com/docs/connect/setting-mcc)
      * @returns {Promise}
      */
     async vendorKyc(stripeAccountId, {
       address = {},
       dob = {},
       name = {},
+      email = null,
+      phone = null,
+      businessUrl = null,
       ssnLastFour = null,
-      fullSsn = null,
-      personalIdNumber = null
+      personalIdNumber = null,
+      mcc = null
     }) {
       try {
         const entityObj = {
-          address,
-          dob,
-          first_name: name.first,
-          last_name: name.last,
-          type: "individual"
+          individual: {
+            address,
+            dob,
+            first_name: name.first,
+            last_name: name.last,
+            id_number: personalIdNumber,
+            ssn_last_4: ssnLastFour,
+            email,
+            phone
+          },
+          business_type: "individual",
+          business_profile: {
+            mcc,
+            url: businessUrl
+          }
         }
-        if (ssnLastFour !== null) entityObj.ssn_last_4 = ssnLastFour
-        if (fullSsn !== null) entityObj.fullSsn = fullSsn
-        if (personalIdNumber !== null) entityObj.personal_id_number = personalIdNumber
-        return await stripe.accounts.update(stripeAccountId, {
-          legal_entity: entityObj
-        })
+        if (ssnLastFour !== null && personalIdNumber !== null) {
+          entityObj.individual.ssn_last_4 = ssnLastFour
+          entityObj.individual.id_number = personalIdNumber
+        }
+        return await stripe.accounts.update(stripeAccountId, entityObj)
       } catch (err) {
         // istanbul ignore next
         throw err
@@ -244,7 +266,7 @@ module.exports = (stripeSecretKey) => {
      * ToS acceptance of a Vendor (Stripe Custom Account)
      * @param {string} stripeAccountId Vendor Id (begins with "acct_")
      * @param {object} _ ToS Acceptance details
-     * @param {string} _.tosAcceptanceDate Date (in UNIX timestamp format) of ToS acceptance
+     * @param {number} _.tosAcceptanceDate Date (in UNIX timestamp format) of ToS acceptance
      * @param {string} _.tosAcceptanceIp IP address from where the ToS was accepted
      * @param {string} [_.tosUserAgent=null] User Agent string of the browser using which the ToS was accepted
      * @returns {Promise}

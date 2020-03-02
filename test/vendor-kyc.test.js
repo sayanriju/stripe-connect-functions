@@ -10,82 +10,47 @@ test("Should be a function.", (t) => {
   t.is(typeof vendorKyc, "function")
 })
 
-test("Should update a Vendors KYC (with Personal ID Number)", async (t) => {
-  const { id, legal_entity } = await vendorKyc("acct_1CK10nIacGIwwFOI", { personalIdNumber: "abcd1234" })
+test("Should update a Vendors KYC (with Personal ID Number and SSN)", async (t) => {
+  const { id, individual } = await vendorKyc("acct_1CK10nIacGIwwFOI", { personalIdNumber: "abcd1234", ssnLastFour: "1234" })
   t.is(id, "acct_1CK10nIacGIwwFOI")
-  t.deepEqual(legal_entity, {
-    address: {
-      city: "New York",
-      country: "US",
-      line1: "Add Line 1",
-      line2: "Add Line 2",
-      postal_code: "700001",
-      state: "NY"
-    },
-    dob: {
-      day: "13",
-      month: "05",
-      year: "1990"
-    },
-    first_name: "Foo",
-    last_name: "Bar",
-    ssn_last_4_provided: false,
-    ssn_last_4: null,
-    personal_id_number_provided: true,
-    personal_id_number: "abcd1234",
-    type: null,
-  })
+  t.is(individual.ssn_last_4_provided, true)
+  t.is(individual.id_number_provided, true)
 })
 
 test("Should update a Vendors KYC (without SSN)", async (t) => {
-  const { id, legal_entity } = await vendorKyc("acct_1CK10nIacGIwwFOI", {})
-  t.is(id, "acct_1CK10nIacGIwwFOI")
-  t.deepEqual(legal_entity, {
+  const { id, individual } = await vendorKyc("acct_1CK10nIacGIwwFOI", {
     address: {
-      city: "New York",
-      country: "US",
-      line1: "Add Line 1",
-      line2: "Add Line 2",
-      postal_code: "700001",
-      state: "NY"
+      city: "Brockton",
+      line1: "700 Oak Street",
+      line2: "",
+      postal_code: "2301",
+      state: "MA",
+      country: "US"
     },
     dob: {
-      day: "13",
-      month: "05",
-      year: "1990"
+      day: "6",
+      month: "1",
+      year: "1975"
     },
-    first_name: "Foo",
-    last_name: "Bar",
-    ssn_last_4_provided: false,
-    ssn_last_4: null,
-    personal_id_number_provided: false,
-    personal_id_number: null,
-    type: null,
+    name: {
+      first: "Indrajit",
+      last: "Roy"
+    }
   })
-})
-test("Should update a Vendors KYC (with SSN)", async (t) => {
-  const { id, legal_entity } = await vendorKyc("acct_1CK10nIacGIwwFOI", { ssnLastFour: "9876", fullSsn: "123456789876" })
   t.is(id, "acct_1CK10nIacGIwwFOI")
-  t.deepEqual(legal_entity, {
-    address: {
-      city: "New York",
-      country: "US",
-      line1: "Add Line 1",
-      line2: "Add Line 2",
-      postal_code: "700001",
-      state: "NY"
-    },
-    dob: {
-      day: "13",
-      month: "05",
-      year: "1990"
-    },
-    first_name: "Foo",
-    last_name: "Bar",
-    ssn_last_4_provided: true,
-    ssn_last_4: "9876",
-    personal_id_number_provided: false,
-    personal_id_number: null,
-    type: null,
+  t.is(individual.first_name, "Indrajit")
+  t.is(individual.last_name, "Roy")
+  t.deepEqual(individual.address, {
+    city: "Brockton",
+    line1: "700 Oak Street",
+    line2: null,
+    postal_code: "2301",
+    state: "MA",
+    country: "US"
+  })
+  t.deepEqual(individual.dob, {
+    day: "6",
+    month: "1",
+    year: "1975"
   })
 })
