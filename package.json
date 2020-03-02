@@ -34,7 +34,7 @@
     "stripe": "^8.24.0"
   },
   "devDependencies": {
-    "ava": "^2.3.0",
+    "ava": "^3.5.0",
     "coveralls": "^3.0.9",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.1",
