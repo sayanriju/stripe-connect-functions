@@ -1,6 +1,6 @@
 {
   "name": "stripe-connect-functions",
-  "version": "0.3.5",
+  "version": "1.0.0",
   "description": "A collection of functions to help with a Customers -> Marketplace -> Vendors Workflow using Stripe Connect",
   "main": "index.js",
   "engines": {
