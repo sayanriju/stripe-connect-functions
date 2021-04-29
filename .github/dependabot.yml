@@ -1,0 +1,29 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "23:30"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: stripe
+    versions:
+    - 8.132.0
+    - 8.133.0
+    - 8.134.0
+    - 8.135.0
+    - 8.136.0
+    - 8.137.0
+    - 8.138.0
+    - 8.139.0
+    - 8.140.0
+    - 8.141.0
+    - 8.142.0
+    - 8.143.0
+  - dependency-name: y18n
+    versions:
+    - 4.0.1
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
