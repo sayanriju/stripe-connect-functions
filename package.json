@@ -31,7 +31,7 @@
     "stripe connect"
   ],
   "dependencies": {
-    "stripe": "^8.24.0"
+    "stripe": "^8.213.0"
   },
   "devDependencies": {
     "ava": "^3.5.0",
